@@ -1,2 +1,2 @@
 # zeya
-Wiki and Prototyping for Secret Service
+[Wiki](https://github.com/kkamperschroer/zeya/wiki) for Secret Service
