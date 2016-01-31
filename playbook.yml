@@ -1,0 +1,7 @@
+---
+- name: Test this mofo
+  hosts:
+    - testhost
+  tasks:
+    - name: test shell
+      file: path=create_once state=touch

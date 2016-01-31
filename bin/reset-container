@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+touch /vagrant/hosts
+RUNNING_CONTAINERS=$(docker ps -q)
+if [ "$RUNNING_CONTAINERS" != "" ]; then
+    echo $RUNNING_CONTAINERS | xargs docker stop
+fi
+ALL_CONTAINERS=$(docker ps -a -q)
+if [ "$ALL_CONTAINERS" != "" ]; then
+    echo $ALL_CONTAINERS | xargs docker rm
+fi
+
+container_id=$(docker run -d -P --name testhost ssh-container)
+ip_cmd="docker inspect --format '{{.NetworkSettings.IPAddress}}' $container_id"
+container_ip=`eval $ip_cmd`
+rm /vagrant/hosts
+touch /vagrant/hosts
+echo "testhost ansible_host=$container_ip ansible_connection=ssh ansible_user=root ansible_ssh_pass=wokkawokka" >> /vagrant/hosts
