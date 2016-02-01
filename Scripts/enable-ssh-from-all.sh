@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e
 
 echo "Host *" > ~vagrant/.ssh/config

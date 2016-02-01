@@ -1,0 +1,5 @@
+consul:
+  build: Dockerfiles/consul/Dockerfile
+
+#vault:
+#  build: Dockerfile/vault/Dockerfile

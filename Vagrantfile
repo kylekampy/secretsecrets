@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 def configure_ubuntu(hostname, vm, cpus, memory)
   is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
 
@@ -32,8 +35,9 @@ Vagrant.configure(2) do |config|
     config.cache.scope = :box
   end
 
-  configure_ubuntu('ssquared-ansible', config.vm, 4, 4096)
+  configure_ubuntu('ssquared-vagrant', config.vm, 4, 4096)
 
   config.vm.provision 'shell', path: 'scripts/enable-ssh-from-all.sh'
+  config.vm.provision 'shell', path: 'scripts/configure-profile.sh'
   config.vm.provision 'shell', path: 'scripts/install-packages.sh', run: 'always'
 end

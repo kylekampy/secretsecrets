@@ -1,2 +1,11 @@
-# zeya
-[Wiki](https://github.com/kkamperschroer/zeya/wiki) for Secret Service
+# Secret Secrets
+
+## Development
+
+The first step is to get the Vagrant machine up and running:
+`vagrant up`
+
+After a few minutes the initialization of the machine will finish. Then run:
+`vagrant ssh`
+
+
