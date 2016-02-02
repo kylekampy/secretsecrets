@@ -1,0 +1,12 @@
+
+- name: apt-get update, yo
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install useful tools and utilities
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - emacs
+    - jq
+    - unzip

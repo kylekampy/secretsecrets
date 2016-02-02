@@ -1,22 +1,17 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER SSquared
 
-RUN apt-get install -y wget unzip
+RUN apt-get install -y unzip python-setuptools
+RUN easy_install j2cli
 
 RUN mkdir -p /var/consul/data
-RUN wget -O /tmp/consul.zip https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip
+ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip /tmp/consul.zip
 RUN unzip /tmp/consul.zip -d /var/consul
 
-# RUN mkdir -p /var/vault/data
-# RUN wget -O /tmp/vault.zip https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip
-# RUN unzip /tmp/vault.zip -d /var/vault
+COPY ./consul.json.j2 /var/consul/consul.json.j2
+COPY ./consul-entrypoint.sh /var/consul/consul-entrypoint.sh
+RUN chmod 755 /var/consul/consul-entrypoint.sh
 
-# The config generator takes envrionment variables and dumps them into the config.
-ADD consul-config-generator.sh /tmp/consul-config-generator.sh
-RUN chmod 755 /tmp/consul-config-generator.sh
+ENTRYPOINT ["/var/consul/consul-entrypoint.sh"]
 
-# The first thing to run (generates config)
-ENTRYPOINT /tmp/consul-config-generator.sh
-
-# Finally, the command to run
-CMD ["/var/consul/consul", "agent", "-config-file=/var/consul/config.json"]
+CMD ["/var/consul/consul", "agent", "-server", "-config-file=/var/consul/consul.json"]
