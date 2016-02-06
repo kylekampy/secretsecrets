@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echoerr() { echo -e "\033[1;31m$1\033[0m" 1>&2; }
+echoinfo() { echo -e "\033[1;37m$1\033[0m"; }
+
+if [ -z "$1" ]
+then
+  echoerr "usage: $0 <environment> [docker-compose args]"
+  exit -1
+fi
+
+ROOT_FOLDER=$( dirname `dirname "$0"` )
+COMPOSE_FOLDER=$ROOT_FOLDER/Dockerfiles
+
+if [ $# -gt 0 ]
+then
+  ENVIRONMENT=$1
+  shift
+else
+  echoerr "error: The environment was not specified"
+  exit -1
+fi
+
+while [ $# -gt 0 ]
+do
+    ADDITIONAL_ARGS=$ADDITIONAL_ARGS' '$1
+    shift
+done
+
+
+COMPOSE_FILE=$COMPOSE_FOLDER/docker-compose.yml
+OVERRIDE_COMPOSE_FILE=$COMPOSE_FOLDER/docker-compose.${ENVIRONMENT}.yml
+
+echo "$COMPOSE_FILE $OVERRIDE_COMPOSE_FILE"
+
+if [ ! -e "$OVERRIDE_COMPOSE_FILE" ]
+then
+  echoerr "error: Could not find the docker compose file for environment '${ENVIRONMENT}'. => '${OVERRIDE_COMPOSE_FILE}'"
+  exit -2
+fi
+
+echoinfo "» Environment:      ${ENVIRONMENT}"
+echoinfo "» Compose File:     ${COMPOSE_FILE}"
+echoinfo "» Override File:    ${OVERRIDE_COMPOSE_FILE}"
+echoinfo "» Additional Args:  ${ADDITIONAL_ARGS}"
+docker-compose -f $COMPOSE_FILE -f $OVERRIDE_COMPOSE_FILE $ADDITIONAL_ARGS

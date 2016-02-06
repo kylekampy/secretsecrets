@@ -1,5 +1,5 @@
 consul:
-  build: ./consul
+  container_name: consul
   ports:
   - "8300:8300"
   - "8400:8400"
@@ -7,4 +7,3 @@ consul:
   - "8600:53/udp"
   env_file:
   - consul/localdev.env
-  container_name: consul
