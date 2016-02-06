@@ -41,5 +41,6 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell', path: 'scripts/enable-ssh-from-all.sh'
   config.vm.provision 'shell', path: 'scripts/configure-profile.sh'
+  config.vm.provision 'shell', path: 'scripts/provision-bin.sh'
   config.vm.provision 'shell', path: 'scripts/install-packages.sh', run: 'always'
 end
