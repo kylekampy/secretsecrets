@@ -8,4 +8,5 @@ The first step is to get the Vagrant machine up and running:
 After a few minutes the initialization of the machine will finish. Then run:
 `vagrant ssh`
 
-
+Bring up the docker containers for the dev environment via:
+`compose dev up -d`
