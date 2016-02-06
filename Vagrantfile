@@ -34,6 +34,8 @@ Vagrant.configure(2) do |config|
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
+  # Forward ports from the host into the guest
+  config.vm.network "forwarded_port", guest: 8500, host: 8500, auto_correct: true
 
   configure_ubuntu('ssquared-vagrant', config.vm, 4, 4096)
 
