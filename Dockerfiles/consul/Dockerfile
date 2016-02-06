@@ -1,14 +1,12 @@
-FROM ubuntu:14.04
+FROM alpine:3.3
 MAINTAINER SSquared
 
-RUN apt-get install -y unzip python-setuptools
-RUN easy_install j2cli
+RUN apk add --update unzip
 
 RUN mkdir -p /var/consul/data
 ADD https://releases.hashicorp.com/consul/0.6.3/consul_0.6.3_linux_amd64.zip /tmp/consul.zip
 RUN unzip /tmp/consul.zip -d /var/consul
 
-COPY ./consul.json.j2 /var/consul/consul.json.j2
 COPY ./consul-entrypoint.sh /var/consul/consul-entrypoint.sh
 RUN chmod 755 /var/consul/consul-entrypoint.sh
 

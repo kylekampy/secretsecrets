@@ -21,7 +21,7 @@ def configure_ubuntu(hostname, vm, cpus, memory)
   end
 
   vm.provider 'vmware_fusion' do |vmw, override|
-    override.vm.network :private_network, ip: "192.168.100.10"
+    override.vm.network :private_network, ip: "192.168.110.10"
 
     vmw.vmx['numvcpus'] = cpus.to_s()
     vmw.vmx['memsize'] = memory.to_s()
