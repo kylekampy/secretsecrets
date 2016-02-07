@@ -1,3 +1,8 @@
-consul:
-  build: ./consul
+version: "2"
 
+services:
+  consul:
+    build: ./consul
+
+  vault:
+    build: ./vault

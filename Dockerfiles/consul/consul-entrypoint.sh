@@ -1,7 +1,7 @@
 #!/bin/sh -e
 cat > /var/consul/consul.json <<-EOF
 {
-  "client_addr": "0.0.0.0",
+  "client_addr": "${CONSUL_CLIENT_ADDR}",
   "advertise_addr_wan": "${CONSUL_ADVERTISE_ADDR_WAN}",
   "bootstrap": ${CONSUL_BOOTSTRAP_FLAG},
   "datacenter": "${CONSUL_DATACENTER}",
