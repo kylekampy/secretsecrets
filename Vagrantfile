@@ -9,6 +9,7 @@ def configure_ubuntu(hostname, vm, cpus, memory)
 
   vm.provider 'virtualbox' do |vb, override|
     override.vm.network :private_network, ip: "192.168.100.10"
+
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
     vb.cpus = cpus
@@ -36,6 +37,8 @@ Vagrant.configure(2) do |config|
   end
   # Forward ports from the host into the guest
   config.vm.network "forwarded_port", guest: 8500, host: 8500, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8181, host: 8181, auto_correct: true
 
   configure_ubuntu('ssquared-vagrant', config.vm, 4, 4096)
 
@@ -43,4 +46,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision 'shell', path: 'scripts/configure-profile.sh'
   config.vm.provision 'shell', path: 'scripts/provision-bin.sh'
   config.vm.provision 'shell', path: 'scripts/install-packages.sh', run: 'always'
+  config.vm.provision 'shell', path: 'scripts/start-docker-environment.sh', run: 'always'
 end

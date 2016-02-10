@@ -6,3 +6,6 @@ services:
 
   vault:
     build: ./vault
+
+  vault-ui:
+    image: nginx

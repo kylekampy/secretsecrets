@@ -25,3 +25,11 @@ services:
     - consul
     env_file:
     - vault/localdev.env
+
+  vault-ui:
+    container_name: vault-ui
+    ports:
+    - "8080:80"
+    - "8181:443"
+    volumes:
+    - /vagrant/web:/usr/share/nginx/html
