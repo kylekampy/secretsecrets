@@ -32,4 +32,5 @@ services:
     - "8080:80"
     - "8181:443"
     volumes:
-    - /vagrant/web:/usr/share/nginx/html
+    - ../web:/usr/share/nginx/html
+    - ./vault-ui/nginx.dev.conf:/etc/nginx/nginx.conf:ro
