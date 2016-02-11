@@ -3,10 +3,20 @@
 ## Development
 
 The first step is to get the Vagrant machine up and running:
-`vagrant up`
+```
+vagrant up
+```
 
 After a few minutes the initialization of the machine will finish. Then run:
-`vagrant ssh`
+```
+vagrant ssh
+```
 
-Bring up the docker containers for the dev environment via:
-`compose dev up -d`
+As part of the `vagrant up` process, the necessary docker containers will have started for local development.
+
+Assuming everything went smoothly, open up the ui:
+- http://192.168.100.10:8080
+
+## Useful links
+- [Vault API](https://www.vaultproject.io/docs/http/index.html)
+- [Vault Docs](https://www.vaultproject.io/docs/index.html)
