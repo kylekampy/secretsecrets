@@ -36,10 +36,10 @@ Vagrant.configure(2) do |config|
     config.cache.scope = :box
   end
   # Forward ports from the host into the guest
-  config.vm.network "forwarded_port", guest: 8500, host: 8500, auto_correct: true
-  config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
-  config.vm.network "forwarded_port", guest: 8181, host: 8181, auto_correct: true
-  config.vm.network "forwarded_port", guest: 8200, host: 8200, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8500, host: 8500, auto_correct: true # Consul
+  config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true # Vault UI http
+  config.vm.network "forwarded_port", guest: 8181, host: 8181, auto_correct: true # Vault UI https
+  config.vm.network "forwarded_port", guest: 8200, host: 8200, auto_correct: true # Vault API
 
   configure_ubuntu('ssquared-vagrant', config.vm, 4, 4096)
 
