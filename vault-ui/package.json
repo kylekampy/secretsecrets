@@ -1,0 +1,18 @@
+{
+  "name": "vault-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
+    "gulp-typescript": "^2.11.0",
+    "react": "^0.14.7",
+    "typescript": "^1.7.5"
+  }
+}
