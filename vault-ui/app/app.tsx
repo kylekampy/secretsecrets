@@ -1,4 +1,5 @@
 /// <reference path="../typings/react.d.ts" />
+"use strict"
 
 import * as React from 'react';
 
@@ -14,6 +15,6 @@ class Demo extends React.Component<DemoProps, any> {
     this.foo = 42;
   }
   render() {
-    return <div>Hello world!</div>
+    return <div>Hello world!!!</div>
   }
 }
