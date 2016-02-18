@@ -15,7 +15,8 @@ var customOpts = {
   debug: true
 };
 var browserifyOpts = _.assign({}, watchify.args, customOpts);
-var b = browserify(browserifyOpts); 
+var b = browserify(browserifyOpts);
+b.require('./release/app/app.js', {expose: 'app' });
 
 
 
@@ -34,7 +35,6 @@ gulp.task('buildApp', ['compileApp'], function() {
 
 gulp.task('bundleApp', function () { 
     return b
-        .require('./release/app/app.js', {expose: 'app' })
         .bundle()
         // log errors if they happen
         .on('error', gutil.log.bind(gutil, 'Browserify Error'))
@@ -66,7 +66,7 @@ gulp.task('build', ['npmInstall'], function () {
 
 
 gulp.task('watch', ['build'], function() {
-    b = watchify(b); 
+    b.plugin(watchify); 
     b.on('update', function () { gulp.start('bundleApp') });
     b.on('log', gutil.log);
 
