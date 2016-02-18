@@ -2,9 +2,16 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/styles/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/styles/skeleton.css" />
-        <script src="/scripts/jquery-2.2.0.min.js"></script>
+   
     </head>
     <body>
         <h1>Vault UI!</h1>
+        <div id="appDiv"></div>
+        <script src="/scripts/bundle.js"></script>
+        <script>
+            var app = require('app');
+            var appDiv = document.getElementById('appDiv');
+            app.render(appDiv);
+        </script>
     </body>
 </html>

@@ -33,17 +33,19 @@ gulp.task('buildApp', ['compileApp'], function() {
 
 
 gulp.task('bundleApp', function () { 
-    return b.bundle()
-    // log errors if they happen
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-    .pipe(source('appBundle.js'))
-    // optional, remove if you don't need to buffer file contents
-    // .pipe(buffer())
-    // // optional, remove if you dont want sourcemaps
-    // .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-    // Add transformation tasks to the pipeline here.
-    // .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('./release/scripts'));
+    return b
+        .require('./release/app/app.js', {expose: 'app' })
+        .bundle()
+        // log errors if they happen
+        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .pipe(source('bundle.js'))
+        // optional, remove if you don't need to buffer file contents
+        // .pipe(buffer())
+        // // optional, remove if you dont want sourcemaps
+        // .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
+        // Add transformation tasks to the pipeline here.
+        // .pipe(sourcemaps.write('./')) // writes .map file
+        .pipe(gulp.dest('./release/scripts'));
 });
 
 
@@ -52,9 +54,14 @@ gulp.task('buildWeb', function() {
                .pipe(gulp.dest('release'));
 });
 
+gulp.task('buildScripts', function() { 
+    return gulp.src('scripts/**/*')
+               .pipe(gulp.dest('release/scripts'));
+})
+
 
 gulp.task('build', ['npmInstall'], function () { 
-    return gulp.start('buildApp', 'buildWeb');
+    return gulp.start('buildApp', 'buildWeb', 'buildScripts');
 });
 
 
@@ -65,6 +72,7 @@ gulp.task('watch', ['build'], function() {
 
     gulp.watch(['app/**/*.ts', 'app/**/*.tsx'], ['compileApp']);
     gulp.watch(['web/**/*'], ['buildWeb']);
+    gulp.watch(['scripts/**/*'], ['buildScripts']);
 });
 
 
