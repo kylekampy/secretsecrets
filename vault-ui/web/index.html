@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/styles/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/skeleton.css" />
+        <link rel="stylesheet" href="/styles/font-awesome-4.5.0/css/font-awesome.min.css">
+   
+    </head>
+    <body>
+        <div id="appDiv"></div>
+        <script src="/scripts/bundle.js"></script>
+        <script>
+            var app = require('app');
+            var appDiv = document.getElementById('appDiv');
+            app.render(appDiv);
+        </script>
+    </body>
+</html>

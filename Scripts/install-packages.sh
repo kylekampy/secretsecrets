@@ -18,3 +18,10 @@ curl -sSL https://get.docker.com/ | sh
 adduser vagrant docker
 curl -L https://github.com/docker/compose/releases/download/1.6.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod 755 /usr/local/bin/docker-compose
+
+
+# Install latest nodejs/npm
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+apt-get install -y nodejs
+npm -g install npm@latest
+npm install -g gulp

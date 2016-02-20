@@ -47,5 +47,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision 'shell', path: 'scripts/configure-profile.sh'
   config.vm.provision 'shell', path: 'scripts/provision-bin.sh'
   config.vm.provision 'shell', path: 'scripts/install-packages.sh', run: 'always'
+  config.vm.provision 'shell', path: 'scripts/build-vault-ui.sh', privileged: false, run: 'always'
   config.vm.provision 'shell', path: 'scripts/start-docker-environment.sh', run: 'always'
 end
