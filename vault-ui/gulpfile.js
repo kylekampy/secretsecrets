@@ -3,6 +3,7 @@ var ts = require('gulp-typescript');
 var gulpInstall = require("gulp-install");
 var watchify = require('watchify');
 var browserify = require('browserify');
+var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
 var _ = require('lodash');
@@ -21,10 +22,12 @@ b.require('./release/app/app.js', {expose: 'app' });
 
 
 gulp.task('compileApp', function () {
-    var tsResult = tsProject.src().pipe(
-        ts(tsProject));
-
-    return tsResult.js.pipe(gulp.dest('release'));
+    return tsProject.src()
+        .pipe(sourcemaps.init())
+        .pipe(ts(tsProject))
+        .js
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('release'));
 });
 
 
