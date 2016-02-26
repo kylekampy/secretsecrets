@@ -40,7 +40,10 @@ gulp.task('bundleApp', function () {
     return b
         .bundle()
         // log errors if they happen
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .on('error', function(err) {
+            gutil.log('Browserify Error', err.toString());
+            this.emit('end'); // Ends the task
+        })
         .pipe(source('bundle.js'))
         // optional, remove if you don't need to buffer file contents
         // .pipe(buffer())
