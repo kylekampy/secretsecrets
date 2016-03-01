@@ -1,49 +1,176 @@
 /// <reference path="../typings/tsd.d.ts" />
-/// <reference path="./models/clock.ts" />
 "use strict";
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import views = require('./views');
 
-import models = vaultUi.models
 
-class DemoProps {
+class AppProps {
   public name:string;
 }
 
-class DemoState { 
-    public time:Date;
+class AppState { 
 }
 
-class App extends React.Component<DemoProps, DemoState> {
-  constructor(props:DemoProps) {
-    super(props);
-  }
+class App extends React.Component<AppProps, AppState> {
+    constructor(props:AppProps) {
+      super(props);
+    }
 
-  fetchStateFromServer() { 
-      var state = new DemoState();
-      state.time = new Date();
-      this.setState(state);
-  }
+    public render():JSX.Element {
+        return (
+            <div className="main">
+                <div className="container">
+                    <div className="row toolbar">
+                        <views.Toolbar />
+                    </div>
 
-  public componentWillMount(): void {
-      this.fetchStateFromServer();
-  }
+                    <div className="row">
+                        <span>foo</span>
+                    </div>
 
-  public componentDidMount():void {
-      setInterval(() => this.fetchStateFromServer(), 1000);
-  }
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
 
-  public render():JSX.Element {
-    return (
-        <div>
-            <h1><i className="fa fa-user-secret"></i> {this.props.name}!</h1> 
-            <p>The date is {this.state.time.toString()}</p>
-        </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+
+
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                                        <div className="row">
+                        <span>foo</span>
+                    </div>
+                </div>
+            </div>
         );
-  }
+    }
 }
 
 export function render(element: Element) {
-  ReactDOM.render(<App name="Secret Service"/>, element)
+  ReactDOM.render(<App name="Secret Secrets"/>, element)
 }

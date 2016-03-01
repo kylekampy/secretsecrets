@@ -26,7 +26,7 @@ gulp.task('compileApp', function () {
         .pipe(ts(tsProject))
         .js
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('release'));
+        .pipe(gulp.dest('release/app'));
 });
 
 
