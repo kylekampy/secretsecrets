@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
-var gulpInstall = require("gulp-install");
 var watchify = require('watchify');
 var browserify = require('browserify');
 var sourcemaps = require('gulp-sourcemaps');
@@ -66,7 +65,7 @@ gulp.task('buildScripts', function() {
 })
 
 
-gulp.task('build', ['npmInstall'], function () { 
+gulp.task('build', function () { 
     return gulp.start('buildApp', 'buildWeb', 'buildScripts');
 });
 
@@ -83,9 +82,3 @@ gulp.task('watch', ['build'], function() {
 
 
 gulp.task('default', ['build']);
-
-
-gulp.task('npmInstall', function () {
-    return gulp.src("./package.json")
-               .pipe(gulpInstall());
-});
