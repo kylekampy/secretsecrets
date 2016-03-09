@@ -1,8 +1,8 @@
 
 .toolbar
 {
-    background-color:rgba(0, 0, 0, 0);
-    position: fixed;
+    background-color:rgba(0, 0, 0, 1);
     top: 0;
-    left: 0;
+    vertical-align: middle;
+    height: 50px;
 }
