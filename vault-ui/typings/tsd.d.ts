@@ -11,3 +11,5 @@
 /// <reference path="react/react-addons-update.d.ts" />
 /// <reference path="react/react-global.d.ts" />
 /// <reference path="date.format.js/date.format.d.ts" />
+/// <reference path="react-redux/react-redux.d.ts" />
+/// <reference path="redux/redux.d.ts" />
