@@ -1,8 +1,9 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 "use strict";
 
 import * as React from 'react';
-import * as Toolbar from '../toolbar/toolbar';
+import * as ReactDOM from 'react-dom';
+import Toolbar from './components/toolbar/toolbar';
 
 export default class App extends React.Component<{}, {}> {
     constructor(props:any) {
@@ -13,12 +14,16 @@ export default class App extends React.Component<{}, {}> {
         return (
             <div>
                 <div>
-                    <Toolbar.Toolbar />
+                    <Toolbar />
                 </div>
-                
             </div>
         );
     }
+}
+
+
+export function render(element: Element) {
+  ReactDOM.render(<App />, element)
 }
 
 

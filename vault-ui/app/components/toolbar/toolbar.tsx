@@ -3,12 +3,8 @@
 
 import * as React from 'react';
 
-export class ToolbarProps { }
-
-export class ToolbarState { }
-
-export class Toolbar extends React.Component<ToolbarProps, ToolbarState>  {
-    constructor(props: ToolbarProps) {
+export default class Toolbar extends React.Component<{}, {}>  {
+    constructor(props: any) {
         super(props);
     }
 
@@ -23,10 +19,10 @@ export class Toolbar extends React.Component<ToolbarProps, ToolbarState>  {
                         </span>
                     </div>
                     <div className="two columns">
-                        <a className="button" href="/nav1/">NAV1</a>                
+                        <a href="/nav1/">NAV1</a>                
                     </div>
                     <div className="two columns">
-                        <a className="button" href="/nav2/">NAV2</a>
+                        <a href="/nav2/">NAV2</a>
                     </div>
                 </div>
             </nav>
