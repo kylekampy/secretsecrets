@@ -4,6 +4,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Toolbar from './components/toolbar/toolbar';
+import Jumbotron from './components/jumbotron/jumbotron';
 
 export default class App extends React.Component<{}, {}> {
     constructor(props:any) {
@@ -15,6 +16,7 @@ export default class App extends React.Component<{}, {}> {
             <div>
                 <div>
                     <Toolbar />
+                    <Jumbotron />
                 </div>
             </div>
         );
