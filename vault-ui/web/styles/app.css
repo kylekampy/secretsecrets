@@ -1,8 +1,6 @@
 
-.toolbar
-{
-    background-color:rgba(0, 0, 0, 1);
-    top: 0;
-    vertical-align: middle;
-    height: 50px;
+body { 
+    /*Padding for the navbar*/
+    padding-top: 70px; 
 }
+

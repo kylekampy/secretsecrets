@@ -10,19 +10,29 @@ export default class Toolbar extends React.Component<{}, {}>  {
 
     public render(): JSX.Element {
         return (
-            <nav className="toolbar">
+            <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container">
-                    <div className="one column">
-                        <span className="fa-stack fa-2x">
-                            <i className="fa fa-circle fa-stack-2x fa-inverse"></i>
-                            <i className="fa fa-user-secret fa-stack-2x"></i>
-                        </span>
+                    <div className="navbar-header">
+                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                        <a className="navbar-brand" href="#">
+                            <span className="fa-stack">
+                                <i className="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                <i className="fa fa-user-secret fa-stack-2x"></i>
+                            </span>
+                            <span>Secret Secrets</span>
+                        </a>
                     </div>
-                    <div className="two columns">
-                        <a href="/nav1/">NAV1</a>                
-                    </div>
-                    <div className="two columns">
-                        <a href="/nav2/">NAV2</a>
+                    <div id="navbar" className="collapse navbar-collapse">
+                        <ul className="nav navbar-nav">
+                            <li className="active"><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
             </nav>
