@@ -1,22 +1,28 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 "use strict";
 
-import * as React from 'react';
-import * as constants from '../../constants';
+import * as React from "react";
+import * as constants from "../../constants";
 
-interface ToolbarProps {
-    ActiveTab: Constants.Tabs
-    OnTabSelect: (tab: constants.Tabs) => { }
+interface IToolbarProps {
+    ActiveTab: constants.Tabs;
+    OnTabSelect: (tab: constants.Tabs) => {};
 }
 
-export default (props: ToolbarProps) => {
+export default (props: IToolbarProps) => {
     console.log("props", props);
 
     return (
         <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
                 <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <button type="button"
+                        className="navbar-toggle collapsed"
+                        data-toggle="collapse"
+                        data-target="#navbar"
+                        aria-expanded="false"
+                        aria-controls="navbar">
+
                         <span className="sr-only">Toggle navigation</span>
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
@@ -32,19 +38,19 @@ export default (props: ToolbarProps) => {
                 </div>
                 <div id="navbar" className="collapse navbar-collapse">
                     <ul className="nav navbar-nav">
-                        <li className={ props.ActiveTab === constants.Tabs.Home ? 'active' : null }>
-                            <a href="#" onClick={() => props.OnTabSelect(constants.Tabs.Home)}>Home</a>
+                        <li className={ props.ActiveTab === constants.Tabs.Home ? "active" : undefined }>
+                            <a href="#" onClick={() => props.OnTabSelect(constants.Tabs.Home) }>Home</a>
                         </li>
-                        <li className={ props.ActiveTab === constants.Tabs.About ? 'active' : null }>
-                            <a href="#about" onClick={() => props.OnTabSelect(constants.Tabs.About)}>About</a>
+                        <li className={ props.ActiveTab === constants.Tabs.About ? "active" : undefined }>
+                            <a href="#about" onClick={() => props.OnTabSelect(constants.Tabs.About) }>About</a>
                         </li>
-                        <li className={ props.ActiveTab === constants.Tabs.Contact ? 'active' : null }>
-                            <a href="#contact" onClick={() => props.OnTabSelect(constants.Tabs.Contact)}>Contact</a>
+                        <li className={ props.ActiveTab === constants.Tabs.Contact ? "active" : undefined }>
+                            <a href="#contact" onClick={() => props.OnTabSelect(constants.Tabs.Contact) }>Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
 

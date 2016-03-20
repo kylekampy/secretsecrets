@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 "use strict";
 
-import * as React from 'react';
+import * as React from "react";
 
 export default class Jumbotron extends React.Component<{}, {}>  {
     constructor(props: any) {
@@ -17,6 +17,6 @@ export default class Jumbotron extends React.Component<{}, {}>  {
                     <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
                 </div>
             </div>
-        )
+        );
     }
 }

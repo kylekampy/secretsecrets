@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
+var tslint = require("gulp-tslint");
 var _ = require('lodash');
 
 
@@ -18,8 +19,6 @@ var browserifyOpts = _.assign({}, watchify.args, customOpts);
 var b = browserify(browserifyOpts);
 b.require('./release/app/index.js', {expose: 'app' });
 
-
-
 gulp.task('compileApp', function () {
     return tsProject.src()
         .pipe(sourcemaps.init())
@@ -29,8 +28,15 @@ gulp.task('compileApp', function () {
         .pipe(gulp.dest('release/app'));
 });
 
+gulp.task("tslint", function () { 
+    return tsProject.src()
+        .pipe(tslint())
+        .pipe(tslint.report("verbose", {
+            reportLimit: 8
+        }));
+});
 
-gulp.task('buildApp', ['compileApp'], function() {
+gulp.task('buildApp', ['compileApp', 'tslint'], function() {
     return gulp.start('bundleApp');
 })
 
@@ -75,10 +81,12 @@ gulp.task('watch', ['build'], function() {
     b.on('update', function () { gulp.start('bundleApp') });
     b.on('log', gutil.log);
 
-    gulp.watch(['app/**/*.ts', 'app/**/*.tsx'], ['compileApp']);
+    gulp.watch(['app/**/*.ts', 'app/**/*.tsx'], ['compileApp', 'tslint']);
     gulp.watch(['web/**/*'], ['buildWeb']);
     gulp.watch(['scripts/**/*'], ['buildScripts']);
 });
+
+
 
 
 gulp.task('default', ['build']);

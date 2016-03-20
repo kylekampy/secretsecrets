@@ -1,15 +1,16 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 "use strict";
 
-import * as Constants from '../../constants';
+import * as constants from "../../constants";
 
 export enum Types {
     SET_TAB
 }
 
-export function setTab(tab: Constants.Tabs) {
+export function setTab(tab: constants.Tabs): any {
+    "use strict";
     return {
+        tab: tab,
         type: Types.SET_TAB,
-        tab: tab
     };
 }
