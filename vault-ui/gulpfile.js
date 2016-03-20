@@ -11,12 +11,12 @@ var _ = require('lodash');
 var tsProject = ts.createProject('tsconfig.json');
 
 var customOpts = {
-  entries: ['./release/app/app.js'],
+  entries: ['./release/app/index.js'],
   debug: true
 };
 var browserifyOpts = _.assign({}, watchify.args, customOpts);
 var b = browserify(browserifyOpts);
-b.require('./release/app/app.js', {expose: 'app' });
+b.require('./release/app/index.js', {expose: 'app' });
 
 
 
