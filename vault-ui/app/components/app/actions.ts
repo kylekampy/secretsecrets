@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../typings.d.ts" />
 "use strict";
 
 import * as constants from "../../constants";
