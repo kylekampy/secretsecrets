@@ -1,9 +1,10 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 "use strict";
 
+import * as React from "react";
 import * as Constants from "../../constants";
 import Toolbar from "../toolbar";
-import Jumbotron from "../jumbotron/jumbotron";
+import Jumbotron from "../jumbotron";
 
 interface IAppProps {
     ActiveTab: Constants.Tabs;
@@ -18,7 +19,7 @@ export default (props: IAppProps) => {
                     ActiveTab={props.ActiveTab}
                     OnTabSelect={props.OnTabSelect}
                     />
-                <Jumbotron />
+                <Jumbotron.Container />
             </div>
         </div>
     );
