@@ -6,9 +6,10 @@ import * as ReactRedux from "react-redux";
 import Presentational from "./presentational";
 import * as actions from "./actions";
 import * as constants from "../../constants";
+import IState from "../../state";
 
 
-const mapStateToProps: ReactRedux.MapStateToProps = (state: any): any => {
+const mapStateToProps: ReactRedux.MapStateToProps = (state: IState): any => {
     return {
         ActiveTab: state.App.ActiveTab,
     };

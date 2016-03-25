@@ -4,8 +4,9 @@
 import Presentational from "./presentational";
 import * as Redux from "redux";
 import * as ReactRedux from "react-redux";
+import IState from "../../state";
 
-const mapStateToProps: ReactRedux.MapStateToProps = (state: any) => {
+const mapStateToProps: ReactRedux.MapStateToProps = (state: IState) => {
     return {};
 };
 

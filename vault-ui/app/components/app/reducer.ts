@@ -1,26 +1,27 @@
 /// <reference path="../../typings.d.ts" />
 "use strict";
 
+import * as immutable from "immutable";
 import * as constants from "../../constants";
 import * as actions from "./actions";
+import IComponentState from "./state";
 
-interface IState {
-    ActiveTab: constants.Tabs;
-};
-
-const initialState: IState = {
+const stateRecord = immutable.Record(<IComponentState>{
     ActiveTab: constants.Tabs.Home,
-};
+});
 
-export default (state: IState = initialState, action: any): IState => {
+const initialState = new stateRecord();
+
+export default (
+    state: immutable.Map<string, any> = initialState,
+    action: any
+): immutable.Map<string, any> => {
+
     switch (action.type) {
         case actions.Types.SET_TAB:
-            return {
-                ActiveTab: action.tab,
-            };
+            return state.set("ActiveTab", action.tab);
 
         default:
-            console.log("Returning state", state);
             return state;
     }
 };
