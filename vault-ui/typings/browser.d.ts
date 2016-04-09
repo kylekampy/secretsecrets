@@ -7,6 +7,7 @@
 /// <reference path="browser/ambient/react-addons-test-utils/index.d.ts" />
 /// <reference path="browser/ambient/react-addons-transition-group/index.d.ts" />
 /// <reference path="browser/ambient/react-addons-update/index.d.ts" />
+/// <reference path="browser/ambient/react-bootstrap/index.d.ts" />
 /// <reference path="browser/ambient/react-dom/index.d.ts" />
 /// <reference path="browser/ambient/react-global/index.d.ts" />
 /// <reference path="browser/ambient/react-redux/index.d.ts" />
