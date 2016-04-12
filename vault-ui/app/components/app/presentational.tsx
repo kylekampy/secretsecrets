@@ -2,9 +2,9 @@
 "use strict";
 
 import * as React from "react";
+import * as RB from "react-bootstrap";
 import * as Constants from "../../constants";
 import Toolbar from "../toolbar";
-import Jumbotron from "../jumbotron";
 
 interface IAppProps {
     ActiveTab: Constants.Tabs;
@@ -19,7 +19,12 @@ export default (props: IAppProps) => {
                     ActiveTab={props.ActiveTab}
                     OnTabSelect={props.OnTabSelect}
                     />
-                <Jumbotron.Container />
+
+                <RB.Jumbotron>
+                    <h1>Hello, world!</h1>
+                    <p>...</p>
+                    <p><RB.Button bsStyle="primary">Learn more</RB.Button></p>
+                </RB.Jumbotron>
             </div>
         </div>
     );
